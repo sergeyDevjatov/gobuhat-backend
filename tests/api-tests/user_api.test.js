@@ -22,6 +22,16 @@ describe('Test the credentials', () => {
             mongoose.connection.dropDatabase();
         });
 
+
+        describe('Test user authentication before creation', () => {
+            test('It should response 401 Not authorized status', async () => {
+                const response = await chai.request(app)
+                    .post('/api/users/authenticate')
+                    .send(credentialsData);
+                expect(response.status).toBe(401);
+            });
+        });
+
         describe('Test user creation', () => {
             test('It should response 201 Created status', async () => {
                 const response = await chai.request(app)
@@ -58,19 +68,6 @@ describe('Test the credentials', () => {
                     .send(wrongCredentialsData);
                 expect(response.status).toBe(401);
             });
-        });
-    });
-
-    describe('Test the user authentication without creation', () => {
-        beforeAll(() => {
-            mongoose.connection.dropDatabase();
-        });
-
-        test('It should response 401 Not authorized status', async () => {
-            const response = await chai.request(app)
-                .post('/api/users/authenticate')
-                .send(credentialsData);
-            expect(response.status).toBe(401);
         });
     });
 });
