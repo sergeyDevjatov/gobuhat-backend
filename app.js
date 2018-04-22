@@ -4,16 +4,21 @@ const expressSession = require('express-session');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const connectDb = require('./db/connect');
+const config = require('./config');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
 
+connectDb(config.mongoUrl);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(expressSession({secret: process.env.SECRET_KEY}));
+app.use(expressSession({secret: config.secret}));
 
 app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);

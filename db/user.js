@@ -16,7 +16,7 @@ userSchema.static('auth', async function (login, password) {
         login,
         password,
     });
-    return _.first(found);
+    return found;
 });
 
 let User = mongoose.model('user', userSchema);

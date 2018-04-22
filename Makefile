@@ -1,11 +1,13 @@
+docker-compose-up = docker-compose -f docker-compose.yml $(1) up --build
+
 run.prod:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+	$(call docker-compose-up,-f docker-compose.prod.yml)
 
 run.dev:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+	$(call docker-compose-up,-f docker-compose.dev.yml)
 
 test:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.dev.test.yml up
+	$(call docker-compose-up,-f docker-compose.dev.yml -f docker-compose.dev.test.yml)
 
 .PHONY: run.prod run.dev test
 

@@ -5,9 +5,11 @@
   "scripts": {
     "start.dev": "nodemon -w . ./bin/www",
     "start.prod": "node ./bin/www",
-    "test": "dev-start --exec 'jest tests/ --runInBand'"
+    "test": "nodemon -w . --exec 'jest tests/* --runInBand || true'"
   },
   "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "cookie-parser": "~1.4.3",
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
@@ -19,7 +21,6 @@
     "morgan": "~1.9.0"
   },
   "devDependencies": {
-    "supertest": "^3.0.0",
     "jest": "^22.4.3",
     "nodemon": "^1.17.3"
   }
