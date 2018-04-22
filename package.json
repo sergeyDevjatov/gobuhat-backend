@@ -5,7 +5,8 @@
   "scripts": {
     "start.dev": "nodemon -w . ./bin/www",
     "start.prod": "node ./bin/www",
-    "test": "nodemon -w . --exec 'jest tests/* --runInBand || true'"
+    "test.watch": "nodemon -w . --exec 'jest tests/* --runInBand || true'",
+    "test": "jest tests/* -b -i --forceExit"
   },
   "dependencies": {
     "chai": "^4.1.2",

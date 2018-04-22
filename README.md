@@ -1,5 +1,8 @@
 # Social networks for drinkers
+
 ### One more project that will not finished ever
+
+[![Build Status](https://travis-ci.org/sergeyDevjatov/gobuhat-backend.svg?branch=master)](https://travis-ci.org/sergeyDevjatov/gobuhat-backend)
 
 ## Build instructions
 
