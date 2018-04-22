@@ -3,7 +3,17 @@
 
 ## Build instructions
 
-To run the project use
+To run the project in development mode use
 ```
-docker-compose up
+make run.dev
+```
+
+To run the project in production mode use
+```
+make run.prod
+```
+
+To run tests use
+```
+make test
 ```

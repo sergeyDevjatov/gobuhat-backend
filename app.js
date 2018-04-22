@@ -1,17 +1,13 @@
 const createError = require('http-errors');
 const express = require('express');
 const expressSession = require('express-session');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-const errorCodes = require('./model/error_codes');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
-
 
 app.use(logger('dev'));
 app.use(express.json());

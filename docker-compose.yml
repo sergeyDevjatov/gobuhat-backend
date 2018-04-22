@@ -5,21 +5,12 @@ services:
     container_name: "gobuhat-backend"
     image: node:alpine
     working_dir: /var/www
-    environment:
-        - NODE_ENV=development
-        - CLEAR_DATABASE
-        - SECRET_KEY=default_secret
-        - MONGO_URL=mongodb://mongodb:27017/test
-        - PORT=3001
     volumes:
         - .:/var/www:rw
-    ports:
-        - 3000:3001
     links:
         - mongodb
     depends_on:
         - mongodb
-    command: ["/bin/sh", "-c", "npm install && npm start"]
   mongodb:
     image: mongo:latest
     container_name: "mongodb"
