@@ -8,6 +8,7 @@ const connectDb = require('./db/connect');
 const config = require('./config');
 
 const indexRouter = require('./routes/index');
+const messagesRouter = require('./routes/messages');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(expressSession({secret: config.secret}));
 
 app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/messages', messagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

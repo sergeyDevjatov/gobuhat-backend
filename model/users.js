@@ -21,7 +21,7 @@ const encodePassword = (password) => {
 const auth = async (login, password) => {
     const foundUser = await User.auth(login, encodePassword(password));
     if(foundUser) {
-        return _.pick(foundUser, ['login']);
+        return _.pick(foundUser, ['login', 'token']);
     } else {
         throw new Error(errorCodes.NOT_AUTHORIZED)
     }
@@ -41,4 +41,9 @@ const create = async (login, password) => {
     }
 };
 
-module.exports = { auth, create };
+const checkSession = async (token) => {
+    const user = await User.checkSession(token);
+    return user && user.login;
+};
+
+module.exports = { auth, create, checkSession };
