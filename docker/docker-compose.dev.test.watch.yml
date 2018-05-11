@@ -1,0 +1,6 @@
+version: '3'
+services:
+  gobuhat-backend:
+    environment:
+      - MONGO_CLEAR=1
+    command: "npm run test.watch"

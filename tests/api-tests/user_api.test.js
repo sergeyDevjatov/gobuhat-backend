@@ -1,6 +1,6 @@
 const chai = require('chai'),
     chaiHttp = require('chai-http'),
-    app = require('../../app'),
+    app = require('../../src/app'),
     mongoose = require('mongoose');
 
 chai.use(chaiHttp);

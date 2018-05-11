@@ -1,0 +1,11 @@
+version: '3'
+services:
+  gobuhat-backend:
+    environment:
+      - NODE_ENV=development
+      - SECRET_KEY=default_secret
+      - MONGO_URL=mongodb://mongodb:27017/dev
+      - PORT=3001
+    ports:
+      - 3000:3001
+    command: "npm run start.dev"

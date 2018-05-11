@@ -1,0 +1,14 @@
+{
+    "extends": [
+      "tslint:recommended"
+    ],
+    "rules": {
+      "quotemark": [true, "single"],
+      "interface-name": [true, "never-prefix"],
+      "max-line-length": [true, 80],
+      "no-consecutive-blank-lines": [true, 2],
+      "no-shadowed-variable": false,
+      "no-console": false
+    }
+  }
+  
