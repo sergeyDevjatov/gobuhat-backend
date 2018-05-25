@@ -4,11 +4,14 @@
     ],
     "rules": {
       "quotemark": [true, "single"],
-      "interface-name": [true, "never-prefix"],
-      "max-line-length": [true, 80],
+      "interface-name": false, // ход гения
+      "max-line-length": [true, 94],
       "no-consecutive-blank-lines": [true, 2],
+      "whitespace": true,
       "no-shadowed-variable": false,
-      "no-console": false
+      "no-console": false,
+      "ordered-imports": false,
+      "one-variable-per-declaration": false,
+      "max-classes-per-file": false
     }
   }
-  

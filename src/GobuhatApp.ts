@@ -6,21 +6,23 @@ import * as createError from 'http-errors';
 import * as logger from 'morgan';
 import * as path from 'path';
 
-import * as indexRouter from './routes/index.js';
-import * as messagesRouter from './routes/messages.js';
+import App from './GobuhatApp.js';
+
+import IndexRouter from './routers/IndexRouter';
+import MessagesRouter from './routers/MessagesRouter';
 import * as usersRouter from './routes/users.js';
 
-import * as config from './config.js';
+import Config from './Config';
 import * as connectDb from './db/connect.js';
 
 
-class App {
+export default class GobuhatApp implements App {
 
     public express: express.Application;
 
     constructor() {
         this.express = express();
-        connectDb(config.mongoUrl);
+        connectDb(Config.mongoUrl);
         this.middleware();
         this.routes();
         this.handlers();
@@ -31,7 +33,7 @@ class App {
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: false }));
         this.express.use(cookieParser());
-        this.express.use(expressSession({secret: config.secret}));
+        this.express.use(expressSession({secret: Config.secret}));
     }
 
     private handlers(): void {
@@ -49,10 +51,8 @@ class App {
     }
 
     private routes(): void {
-        this.express.use('/api/', indexRouter);
-        this.express.use('/api/users', usersRouter);
-        this.express.use('/api/messages', messagesRouter);
+        this.express.use('/api/', IndexRouter.getInstance().router);
+        this.express.use('/api/users', new UsersRouter().router);
+        this.express.use('/api/messages', MessagesRouter.getInstance().router);
     }
 }
-
-export default new App().express;
